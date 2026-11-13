@@ -71,6 +71,13 @@ export function buildMenuTemplate(): Menu {
                     visible: false,
                 },
                 {
+                    // Electron 44 binds the zoomIn role's CmdOrCtrl+Plus as Shift+=. This covers the same key
+                    // without Shift, which is = on US layouts and + on Nordic and German ones.
+                    role: "zoomIn",
+                    accelerator: "CmdOrCtrl+=",
+                    visible: false,
+                },
+                {
                     role: "zoomOut",
                     accelerator: "CmdOrCtrl+NumSub",
                     visible: false,

@@ -47,6 +47,16 @@ describe("buildMenuTemplate", () => {
             expect(menu.items[0].label).toBe("ChatApp");
         });
 
+        it("should also zoom in on CmdOrCtrl+=", () => {
+            const menu = buildMenuTemplate();
+
+            const viewMenu = menu.items.find((item) => item.label === "view_menu|view")!;
+            const viewSubmenu = viewMenu.submenu as unknown as MenuItemConstructorOptions[];
+            expect(viewSubmenu).toContainEqual(
+                expect.objectContaining({ role: "zoomIn", accelerator: "CmdOrCtrl+=", visible: false }),
+            );
+        });
+
         it("should include expected `help` menu", () => {
             const menu = buildMenuTemplate();
 
